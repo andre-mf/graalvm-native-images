@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @SpringBootApplication
 @RestController
 public class GraalvmNativeImagesApplication {
@@ -14,8 +17,8 @@ public class GraalvmNativeImagesApplication {
     }
 
     @GetMapping("/")
-    String hello() {
-        return "Hello, World!";
+    String hello() throws UnknownHostException {
+        return "Hello, World! from " + InetAddress.getLocalHost().getHostName();
     }
 
 }
